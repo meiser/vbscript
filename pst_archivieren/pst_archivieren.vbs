@@ -23,9 +23,9 @@ Set colFiles = objFolder.Files
 For Each objFile in colFiles
     'Wscript.Echo objFile.Path
 	If UCase(objFSO.GetExtensionName(objFile.name)) = "PST" Then
-    	cmd = "C:\Program Files (x86)\EASY xBASE\xadminxbarchpst -vvv -f -l "&"""" &"PstImportLog\"& objFile.Name&".txt" &"""" &" -r auto " &""""&"oelex11" &""""& " " & """"& account_id &"""" & " " &""""& "xBASE" &"""" & " " &""""& objFile.Path&""""
+    	cmd = """" &"C:\Program Files (x86)\EASY xBASE\xadmin\xbarchpst"&"""" &"-vvv -f -l "&"""" &"PstImportLog\"& objFile.Name&".txt" &"""" &" -r auto " &""""&"oelex11" &""""& " " & """"& account_id &"""" & " " &""""& "xBASE" &"""" & " " &""""& objFile.Path&""""
 		Wscript.Echo cmd
 		shl.Run(cmd)
-		objFSO.MoveFile objFile.Path, objReadyFolder
+		'objFSO.MoveFile objFile.Path, objReadyFolder
     End If
 Next
