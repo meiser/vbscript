@@ -20,7 +20,7 @@ ProduKeyFile = """\\oelnas01\Work\S.Keller\ProduKey.exe"""
 'DestinationPath = Replace(shl.CurrentDirectory, "C:\", "\\" & strComputerName & "\C$\", 1,1)
 
 Set TypeLib = CreateObject("Scriptlet.TypeLib")
-DestinationPath = "C:\Temp\key_" & TypeLib.Guid & ".txt"
+DestinationPath = "C:\Windows\Temp\key_" & TypeLib.Guid & ".txt"
 
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 'If objFSO.FileExists(ProduKeyFile) Then
@@ -29,7 +29,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 	'Wscript.Echo cmd
 
 	shl.run cmd,1,TRUE
-	cmd = "cmd /c C:\Temp\ProduKey.exe /scomma """" >> " & DestinationPath
+	cmd = "cmd /c C:\Windows\Temp\ProduKey.exe /scomma """" >> " & DestinationPath
 	shl.run cmd,1,TRUE
 	
 	'Wscript.Echo DestinationPath
@@ -62,12 +62,11 @@ OutputOther = OutputOther & "</SubNode>"
 
 OutputOffice2013 = "<SubNode name=""Microsoft Office 2013"">"
 Office2013KeyScript = "C:\Program Files (x86)\Microsoft Office\Office15\OSPP.VBS"
-Office2013DestinationPath = "C:\Temp\office2013_" & TypeLib.Guid & ".txt"
+Office2013DestinationPath = "C:\Windows\Temp\office2013_" & TypeLib.Guid & ".txt"
 i=0
 
 If objFSO.FileExists(Office2013KeyScript) Then
 	cmd = "cmd /c cscript """ & Office2013KeyScript & """ /dstatus >> " & Office2013DestinationPath
-	Wscript.Echo cmd
 	shl.run cmd,1,TRUE
 	
 	Set objFile = objFSO.OpenTextFile(Office2013DestinationPath,ForReading)
