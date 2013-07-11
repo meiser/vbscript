@@ -57,7 +57,7 @@ do while not objFile.AtEndOfStream
 	Set officeMatches = RegOffice2010.Execute(program(3))
 
 	if officeMatches.Count > 0 then
-		Wscript.Echo "Office 2010", program(3)
+		'Wscript.Echo "Office 2010", program(3)
 		
 		if office2010 = "" then
 			office2010 = program(0)+" "+program(2)
@@ -101,3 +101,28 @@ objTextFile.Close
 Set objTextFile = objFSO.CreateTextFile("office2010.txt", True)
 objTextFile.Write(office2010)
 objTextFile.Close
+
+Office2013KeyScript = "C:\Program Files (x86)\Microsoft Office\Office14\OSPP.VBS"
+Office2013DestinationPath = tempDir & "office2013_" & TypeLib.Guid & ".txt"
+
+'Wscript.Echo Office2013DestinationPath
+
+'If objFSO.FileExists(Office2013KeyScript) Then
+'	cmd = "cmd /c cscript """ & Office2013KeyScript & """ /dstatus >> " & Office2013DestinationPath
+	
+'	Wscript.Echo cmd 
+'	shl.run cmd,1,TRUE
+
+'	Set objFile = objFSO.OpenTextFile(Office2013DestinationPath,ForReading)
+'	do while not objFile.AtEndOfStream
+'		strLine =  objFile.ReadLine()
+'		program = Split(strLine, ":")
+'		Wscript.Echo strLine
+		'if i > 5 and i < 12 then
+		'Last 5 characters of installed product key:	
+			'OutputOffice2013 = OutputOffice2013 & "<Property name=""" & program(0) & """ value=""" & program(1) & """/>"
+		'end if
+'	loop
+
+'end if
+
